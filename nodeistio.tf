@@ -1,5 +1,5 @@
 resource "digitalocean_droplet" "k8s" {
-  count              = 1
+  count              = 3
   image              = "ubuntu-18-04-x64"
   name               = "k8s-${count.index}"
   region             = "nyc3"

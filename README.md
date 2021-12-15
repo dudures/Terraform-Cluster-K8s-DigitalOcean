@@ -201,5 +201,9 @@ kubectl apply -f samples/addons
 kubectl rollout status deployment/kiali -n istio-system
 kubectl get svc -n istio-system 
 kubectl get svc -n istio-system | grep kiali
-kubectl port-forward svc/kiali 20001:20001 -n istio-system --address 0.0.0.0
+kubectl port-forward svc/kiali 20001:20001 -n istio-system --address 0.0.0.0 &
+kubectl port-forward svc/productpage 9080:9080 --address 0.0.0.0 &
+jobs
+kill -9 %1
+kill -9 %2
 ```
