@@ -65,6 +65,16 @@ containerd config default | sudo tee /etc/containerd/config.toml
 
 sudo systemctl restart containerd
 ```
+To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+  ...
+  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+    SystemdCgroup = true  ** adicionar essa linha pois ela não existe no arquivo, sem esse comentário. Observar indentação ***
+If you apply this change make sure to restart containerd again:
+
+sudo systemctl restart containerd
+
 ## [INSTALAÇÃO KUBELET KUBEADM KUBECTL](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 Essa trinca (kubelet, kubeadm e kubectl) é necessária para podermos levantar o nosso cluster kubernetes Multi Control Plane!
